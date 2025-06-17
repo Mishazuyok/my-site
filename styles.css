@@ -1,6 +1,84 @@
 html {
+    background: #000000;
+    background-image: url('0001.png');
+    background-repeat: repeat;
+    background-size: 50%;
+}
+
+p {
+    color: rgb(255, 255, 255);
+}
+
+h3 {
+    color: rgb(255, 255, 255);
+}
+
+span {
+    color: rgb(255, 255, 255);
+}
+
+li {
+    color: rgb(255, 255, 255);
+}
+
+a {
+    color: rgb(188, 255, 188);
+}
+
+.text-text {
+    color: rgb(255, 255, 255);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #555;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.me-div {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-radius: 8px;
+    /*min-height: 300px;*/
+}
+
+.custom-hr {
+    border: 0;
+    height: 2px;
+    background: #ffffff;
+    /*margin-left: -20px; /* может надо */
+    /*margin-right: -20px; /* может надо */
+}
+.nav-arrow {
             background: #000000;
+            color: white;
+            border: solid;
+            border-width: 2px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background-color 0.3s;
         }
-        .text-text {
-        color: rgb(255, 255, 255);
-    }
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .nav-arrow:disabled {
+            background: #000000;
+            cursor: default;
+            opacity: 0.5;
+        }

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>employee-of-the-century</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #818181;
+
+            max-width: 70%;
+            margin: auto;
+            margin-top: 100px;
+            margin-bottom: 60px;
+            background-color: #171717b9;
+            border-style: solid;
+            border-color: #000000;
+        }
+
+        .asbody {
+            padding: 20px;
+            backdrop-filter: blur(3px);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .me-div::-webkit-scrollbar {
+            display: none;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-container"></div>
+    <div class="asbody">
+        <div>
+            <h1 class="text-text">Perfect concrete</h1>
+        </div>
+        <div style="display: flex;">
+            <div style="width: 70%; margin: 20px; padding-top: 20px;">
+                <p>Perfect Concrete is a concrete-based building material with a perfect atomic structure. Unlike
+                    conventional concrete, which has a chaotic arrangement of components and microcracks, Perfect
+                    Concrete is created by precisely positioning atoms, giving it unprecedented strength, durability and
+                    resistance to external influences.</p>
+                <h3>Properties</h1>
+                    <hr class="custom-hr" />
+                    <ul>
+                        <li>Absolute strength - thanks to the ideal crystal lattice, the material has no weak points,
+                            which makes it virtually invulnerable to mechanical stress./li>
+                        <li>Ultra-low porosity - the absence of micropores eliminates corrosion, water absorption and
+                            destruction from freeze-thaw cycles.</li>
+                        <li>Heat resistance - withstands extreme temperatures (from absolute zero to thousands of
+                            degrees).</li>
+                        <li>Chemical inertness - does not react with acids, alkalis and aggressive media.</li>
+                        <li>Self-repair - in case of damage, the atomic structure is automatically rebuilt, tightening
+                            the cracks.</li>
+                        <li>Environmentally friendly - does not emit harmful substances, fully recyclable.</li>
+                    </ul>
+                    <h3>Production technologies</h1>
+                        <hr class="custom-hr" />
+                        <p>Perfect Concrete is created using nanoassemblers or quantum 3D printers that place each atom
+                            in a strictly defined position</p>
+            </div>
+            <div style="width: 30%; background: #000000; padding: 20px; " class="me-div">
+                <h1 style="text-align: center;" class="text-text">Perfect concrete</h1>
+                <div class="me-div" id="gallery" style="display: flex; overflow: hidden; gap: 10px;">
+
+                    <div style="text-align: center; flex: 0 0 100%;">
+                        <img src="perfect-concrete.png" style="width: 100%;" />
+                        <span>common</span>
+                    </div>
+                    <div style="text-align: center; flex: 0 0 100%;">
+                        <img src="perfect-concrete2.png" style="width: 100%;" />
+                        <span>checkered</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-nav">
+                    <button class="nav-arrow" id="prevBtn">‹</button>
+                    <button class="nav-arrow" id="nextBtn">›</button>
+                </div>
+                <p>Density: 3000-3500 kg/m³</p>
+                <p>Thermal conductivity: 0.5-1.0 W/(m-K)</p>
+                <p>Porosity: 0%</p>
+                <p>Temperature range: -273 °C to +2500 °C</p>
+                <p>Porosity: 0%</p>
+                <hr class="custom-hr" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('header-container').innerHTML = html;
+            })
+            .catch(error => console.error('Ошибка загрузки:', error));
+
+            // Галерея
+        let currentSlide = 0;
+        const gallery = document.getElementById('gallery');
+        const slides = gallery.children.length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateGallery() {
+            const slideWidth = gallery.children[0].offsetWidth + 10; // ширина слайда + gap
+            const scrollPosition = currentSlide * slideWidth;
+            gallery.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+            
+            // Обновляем состояние кнопок
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateGallery();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < slides - 1) {
+                currentSlide++;
+                updateGallery();
+            }
+        });
+
+        // Инициализация
+        updateGallery();
+    </script>
+</body>
+
+</html>
